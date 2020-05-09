@@ -1,0 +1,25 @@
+{% extends "quest/base.html"%}
+{% block content %}
+
+<article class="media content-section">
+
+    <div class="media-body">
+        <div class="article-metadata">
+            <small class="text-muted">{{ object.creation_date|date:"F d, Y" }}</small>
+        </div>
+        <h2 class="article-title">{{ object.title }}</h2>
+        <p class="article-content">{{ object.content}}</p>
+
+        {% if object.status == 'SOLVED' %}
+        <div class="article-content">{{ object.solution }}</div>
+        {% else %}
+        <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1"  href="#">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1"  href="#">Delete</a>
+        </div>
+        {% endif %}
+    </div>
+
+</article>
+
+{% endblock content%}
