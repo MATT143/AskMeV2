@@ -9,13 +9,14 @@
         </div>
         <h2 class="article-title">{{ object.title }}</h2>
         <p class="article-content">{{ object.content}}</p>
+        <p>{{object.id}}</p>
 
         {% if object.status == 'SOLVED' %}
         <div class="article-content">{{ object.solution }}</div>
         {% else %}
         <div>
             <a class="btn btn-secondary btn-sm mt-1 mb-1"  href="#">Update</a>
-            <a class="btn btn-danger btn-sm mt-1 mb-1"  href="#">Delete</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1"  href="{% url 'post-delete' object.id %}">Delete</a>
         </div>
         {% endif %}
     </div>

@@ -4,6 +4,10 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from quest.models import Post
 from .models import Profile
+import logging
+
+logger = logging.getLogger(__name__)
+
 def register(request):
     if request.method=='POST':
         form=UserRegistrationForm(request.POST)
@@ -19,7 +23,6 @@ def register(request):
 def profile(request):
     username=request.user
     context={'posts':Post.objects.filter(author=username).order_by('-date_posted')}
-
     return render(request,'users/profile.html',context=context)
 
 @login_required
@@ -39,6 +42,8 @@ def UpdateSettings(request):
         p_form = ProfileUpdateForm(instance=request.user.profile)
 
     context={'u_form':u_form,'p_form':p_form}
+
+
     return render(request,'users/updateSettings.html',context=context)
 
 

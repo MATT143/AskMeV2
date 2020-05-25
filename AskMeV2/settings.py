@@ -127,3 +127,4 @@ LOGIN_URL='login'
 CRISPY_TEMPLATE_PACK='bootstrap4'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')# Location where you are willing to store the media files
 MEDIA_URL='/media/'
+

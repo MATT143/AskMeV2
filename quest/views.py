@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from django.views.generic import CreateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from .models import Post
 from .forms import PostQuestionForm
 import json,requests
@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from uuid import UUID
 from django.utils import timezone
-from django.views.generic import DetailView
+from django.views.generic import DetailView,DeleteView
 
 
 # Create your views here.
@@ -67,6 +67,14 @@ class GetSolutionView(APIView):
 
 class PostDetailsView(DetailView):
     model = Post
+
+
+class PostDeleteView(LoginRequiredMixin,DeleteView):
+    model = Post
+    success_url = "/profile/"
+
+
+
 
 
 
